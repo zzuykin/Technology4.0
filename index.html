@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диагностика станка</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+    <!-- Форма диагностики -->
+    <div class="container">
+        <h1>Проверка состояния станка</h1>
+        
+        <label for="machine">Выберите станок:</label>
+        <select id="machine">
+            <option value="Токарный станок с ЧПУ">Токарный станок с ЧПУ</option>
+            <option value="Фрезерный станок с ЧПУ">Фрезерный станок с ЧПУ</option>
+            <option value="Шлифовальный станок с ЧПУ">Шлифовальный станок с ЧПУ</option>
+        </select>
+
+        <label for="temp">Температура (°C):</label>
+        <input type="number" id="temp" placeholder="Например, 25">
+        <div id="temp-error" class="error-message"></div>
+
+        <label for="pressure">Давление (бар):</label>
+        <input type="number" id="pressure" placeholder="Например, 5">
+        <div id="pressure-error" class="error-message"></div>
+
+        <label for="vibration">Вибрация (мм/с):</label>
+        <input type="number" id="vibration" placeholder="Например, 3.2">
+        <div id="vibration-error" class="error-message"></div>
+
+        <label for="rpm">Обороты (RPM):</label>
+        <input type="number" id="rpm" placeholder="Например, 1500">
+        <div id="rpm-error" class="error-message"></div>
+
+        <label for="current">Ток (A):</label>
+        <input type="number" id="current" placeholder="Например, 20">
+        <div id="current-error" class="error-message"></div>
+
+        <button onclick="checkMachine()">Проверить</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <!-- Галерея на фоне -->
+    <div class="gallery">
+        <figure class="gallery__item"><img src="images/19cent.jpg" alt="" class="gallery__image"></figure>
+        <figure class="gallery__item"><img src="images/photo2.jpg" alt="" class="gallery__image"></figure>
+        <figure class="gallery__item"><img src="images/photo4.jpg" alt="" class="gallery__image"></figure>
+        <figure class="gallery__item"><img src="images/photo1.jpg" alt="" class="gallery__image"></figure>
+        <figure class="gallery__item"><img src="images/sovrstanok.jpg" alt="" class="gallery__image"></figure>
+        <figure class="gallery__item"><img src="images/photo3.jpg" alt="" class="gallery__image"></figure>
+    </div>
+
+    <!-- Кнопка "О проекте" -->
+    <button class="about-btn" onclick="showAbout()">О проекте</button>
+
+    <!-- Модальное окно с текстом о проекте -->
+    <div class="about-modal" id="aboutModal">
+        <div class="about-content">
+            <!-- Кнопка для закрытия модального окна -->
+            
+            <h2>О проекте</h2>
+            <p>
+                Этот проект представляет собой инструмент для диагностики состояния станков, который позволяет пользователям вводить параметры работы оборудования, такие как температура, давление, вибрация, обороты и ток. После ввода данных система предоставляет результат, позволяя оценить текущее состояние станка.
+            </p>
+            <p>
+                В основе проекта лежит подход, направленный на оптимизацию управления производственными процессами. Несмотря на отсутствие реальных датчиков, мы моделируем процесс мониторинга и диагностики, что является важной частью <b>Индустрии 4.0</b>. В этой концепции ключевым моментом является цифровизация и автоматизация процессов, а также интеграция данных и аналитики для принятия более обоснованных решений.
+            </p>
+            <p>
+                Проект иллюстрирует, как технологии могут улучшить управление состоянием станков на производстве. В условиях <b>Индустрии 4.0</b> важно не только иметь доступ к реальным данным о работе оборудования, но и уметь эффективно их анализировать, что позволяет предупреждать поломки и повышать общую эффективность работы. Наш инструмент может быть расширен с использованием реальных датчиков и системы IoT для более точного мониторинга и предсказания состояния оборудования, что поможет добиться значительных улучшений в производственном процессе.
+            </p>
+            <p>
+                В контексте <b>Индустрии 4.0</b> проект показывает, как даже в простых формах можно интегрировать элементы цифровых технологий для улучшения контроля за состоянием производственного оборудования, повышая безопасность и снижая затраты на техническое обслуживание.
+            </p>
+            <span class="close-btn" onclick="closeAbout()">Закрыть</span>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

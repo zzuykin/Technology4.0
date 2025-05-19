@@ -1,0 +1,224 @@
+/* Глобальные стили */
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    background-color: #000; 
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden; /* Чтобы галерея не выходила за пределы экрана */
+}
+
+/* Контейнер страницы */
+.page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Галерея с картинками как фон */
+.gallery {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 1.8fr 2fr 200px;
+    grid-template-rows: 200px repeat(4, 1fr) 5fr;
+    box-sizing: border-box;
+    gap: 10px;
+    padding: 20px 90px 20px;
+    z-index: 0; /* Помещаем галерею на задний план */
+}
+
+.gallery__item {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.gallery__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7; /* Затемняем фон */
+}
+
+.gallery__item:nth-child(5) {
+  grid-column-start: 5;
+  grid-column-end: -1;
+  grid-row-start: 4;
+  grid-row-end: -1;
+}
+
+.gallery__item:nth-child(1) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery__item:nth-child(3) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery__item:nth-child(2) {
+  grid-column-start: 3;
+  grid-column-end: -1;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+.gallery__item:nth-child(4) {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 5;
+  grid-row-end: -1;
+}
+
+.gallery__item:nth-child(6) {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row: 4;
+}
+
+
+/* Контейнер формы диагностики */
+.container { 
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Прозрачный белый фон */
+    border-radius: 8px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Заголовок */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Стили для элементов формы */
+input, select, button { 
+    padding: 10px; 
+    width: 100%; 
+    margin: 10px 0; 
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Кнопка */
+button {
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    cursor: pointer;
+}
+
+button:hover { 
+    background-color: #45a049;
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.05s ease-in-out;
+}
+
+button:active { 
+    transform: scale(1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Результат */
+#result { 
+    margin-top: 20px; 
+    font-size: 18px; 
+    font-weight: bold; 
+}
+
+/* Ошибка */
+.error { 
+    color: red; 
+}
+
+.error-message {
+    color: #d80707;
+    font-size: 12px;
+    margin: 2px;
+    text-align: center;
+}
+
+
+/* Кнопка "О проекте" */
+.about-btn {
+    position: fixed;  /* Фиксируем кнопку в правом верхнем углу */
+    top: 30px;
+    right: 30px;
+    padding: 10px 20px; /* Делаем отступы вокруг текста */
+    background-color: #4CAF50;  /* Цвет фона кнопки */
+    color: white;  /* Цвет текста */
+    border: none;  /* Убираем границу */
+    border-radius: 5px;  /* Скругляем углы */
+    cursor: pointer;  /* Курсор при наведении */
+    font-size: 16px;  /* Размер шрифта */
+    z-index: 100;  /* Убедимся, что кнопка будет поверх других элементов */
+    display: inline-block;  /* Это гарантирует, что кнопка не растянется */
+    width: 120px;  /* Убираем растяжение по ширине */
+    height: 50px;  /* Убираем растяжение по высоте */
+}
+
+.about-btn:hover {
+    background-color: #45a049;
+}
+
+/* Модальное окно "О проекте" */
+.about-modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);  /* Темный фон */
+    z-index: 20;
+    padding-top: 60px;
+    overflow: hidden;  /* Отключаем прокрутку самого окна */
+}
+
+/* Контейнер для контента */
+.about-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    max-height: 70vh;  /* Ограничиваем максимальную высоту */
+    overflow-y: auto;  /* Добавляем прокрутку при переполнении */
+}
+
+.about-content h2 {
+    margin-bottom: 20px;
+}
+
+/* Кнопка закрытия модального окна */
+.close-btn {
+    display: block;
+    margin-top: 20px;  /* Добавляем отступ сверху */
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.close-btn:hover {
+    background-color: #45a049;
+}
